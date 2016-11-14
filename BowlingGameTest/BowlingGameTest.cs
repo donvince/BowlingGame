@@ -6,10 +6,8 @@ namespace BowlingGameTest
     [TestClass]
     public class BowlingGameTest
     {
-        /*
-         * Code spell tracker:
-         * - ugly comment in test
-         */
+        // Code smells tally:
+        // - ugly comment in TestOneStrike
         private Game g;
 
         [TestInitialize]
@@ -35,11 +33,20 @@ namespace BowlingGameTest
         [TestMethod]
         public void TestOneSpare()
         {
-            g.Roll(5);
-            g.Roll(5); // spare
+            RollSpare();
             g.Roll(3);
             RollMany(17, 0);
             Assert.AreEqual(16, g.Score());
+        }
+
+        [TestMethod]
+        public void TestOneStrike()
+        {
+            g.Roll(10); // strike
+            g.Roll(3);
+            g.Roll(4);
+            RollMany(16, 0);
+            Assert.AreEqual(24, g.Score());
         }
 
         private void RollMany(int n, int pins)
@@ -48,6 +55,12 @@ namespace BowlingGameTest
             {
                 g.Roll(pins);
             }
+        }
+
+        private void RollSpare()
+        {
+            g.Roll(5);
+            g.Roll(5);
         }
     }
 }
