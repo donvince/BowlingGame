@@ -4,8 +4,6 @@ namespace BowlingGame
 {
     public class Game
     {
-        // Code smell tally
-        // - ugly comment in conditional
         private int[] rolls = new int[21];
         private int currentRoll = 0;
 
@@ -20,7 +18,7 @@ namespace BowlingGame
             var frameIndex = 0;
             for (int frame = 0; frame < 10; frame++)
             {
-                if (rolls[frameIndex] == 10) //strike
+                if (IsStrike(frameIndex))
                 {
                     score += 10 + StrikeBonus(frameIndex);
                     frameIndex++;
@@ -37,6 +35,11 @@ namespace BowlingGame
                 }
             }
             return score;
+        }
+
+        private bool IsStrike(int frameIndex)
+        {
+            return rolls[frameIndex] == 10;
         }
 
         private int SumOfBallsInFrame(int frameIndex)
