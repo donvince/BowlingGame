@@ -6,11 +6,6 @@ namespace BowlingGameTest
     [TestClass]
     public class BowlingGameTest
     {
-        /*
-         * Code Smell tracker:
-         * - Roll loop is duplicated
-         */
-
         private Game g;
 
         [TestInitialize]
@@ -37,10 +32,7 @@ namespace BowlingGameTest
         [TestMethod]
         public void TestAllOnes()
         {
-            for (int i = 0; i < 20; i++)
-            {
-                g.Roll(1);
-            }
+            RollMany(20, 1);
             Assert.AreEqual(20, g.Score());
         }
     }
