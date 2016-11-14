@@ -8,14 +8,20 @@ namespace BowlingGameTest
     {
         /*
          * Code Smell tracker:
-         * - Game creation is dubplicated
          * - Roll loop is duplicated
          */
+
+        private Game g;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            g = new Game();
+        }
 
         [TestMethod]
         public void TestGutterGame()
         {
-            var g = new Game();
             for (int i = 0; i < 20; i++)
             {
                 g.Roll(0);
@@ -26,7 +32,6 @@ namespace BowlingGameTest
         [TestMethod]
         public void TestAllOnes()
         {
-            var g = new Game();
             for (int i = 0; i < 20; i++)
             {
                 g.Roll(1);
