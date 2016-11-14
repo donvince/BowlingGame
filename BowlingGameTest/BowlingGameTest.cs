@@ -6,8 +6,6 @@ namespace BowlingGameTest
     [TestClass]
     public class BowlingGameTest
     {
-        // Code smells tally:
-        // - ugly comment in TestOneStrike
         private Game g;
 
         [TestInitialize]
@@ -42,7 +40,7 @@ namespace BowlingGameTest
         [TestMethod]
         public void TestOneStrike()
         {
-            g.Roll(10); // strike
+            RollStrike();
             g.Roll(3);
             g.Roll(4);
             RollMany(16, 0);
@@ -55,6 +53,11 @@ namespace BowlingGameTest
             {
                 g.Roll(pins);
             }
+        }
+
+        private void RollStrike()
+        {
+            g.Roll(10);
         }
 
         private void RollSpare()
