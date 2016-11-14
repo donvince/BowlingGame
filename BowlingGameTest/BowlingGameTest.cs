@@ -21,19 +21,19 @@ namespace BowlingGameTest
             Assert.AreEqual(0, g.Score());
         }
 
+        [TestMethod]
+        public void TestAllOnes()
+        {
+            RollMany(20, 1);
+            Assert.AreEqual(20, g.Score());
+        }
+
         private void RollMany(int n, int pins)
         {
             for (int i = 0; i < n; i++)
             {
                 g.Roll(pins);
             }
-        }
-
-        [TestMethod]
-        public void TestAllOnes()
-        {
-            RollMany(20, 1);
-            Assert.AreEqual(20, g.Score());
         }
     }
 }
