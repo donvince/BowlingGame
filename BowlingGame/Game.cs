@@ -4,10 +4,6 @@ namespace BowlingGame
 {
     public class Game
     {
-        /*
-         * Code spell tracker:
-         * - ugly comment in conditional
-         */
         private int[] rolls = new int[21];
         private int currentRoll = 0;
 
@@ -22,7 +18,7 @@ namespace BowlingGame
             var frameIndex = 0;
             for (int frame = 0; frame < 10; frame++)
             {
-                if (rolls[frameIndex] + rolls[frameIndex + 1] == 10) // spare
+                if (IsSpare(frameIndex))
                 {
                     score += 10 + rolls[frameIndex + 2];
                     frameIndex += 2;
@@ -34,6 +30,11 @@ namespace BowlingGame
                 }
             }
             return score;
+        }
+
+        private bool IsSpare(int frameIndex)
+        {
+            return rolls[frameIndex] + rolls[frameIndex + 1] == 10;
         }
     }
 }
