@@ -7,7 +7,6 @@ namespace BowlingGame
         /*
          * Code spell tracker:
          * - ugly comment in conditional
-         * - i is a bad name for this variable
          */
         private int[] rolls = new int[21];
         private int currentRoll = 0;
@@ -20,18 +19,18 @@ namespace BowlingGame
         public int Score()
         {
             var score = 0;
-            var i = 0;
+            var frameIndex = 0;
             for (int frame = 0; frame < 10; frame++)
             {
-                if (rolls[i] + rolls[i + 1] == 10) // spare
+                if (rolls[frameIndex] + rolls[frameIndex + 1] == 10) // spare
                 {
-                    score += 10 + rolls[i + 2];
-                    i += 2;
+                    score += 10 + rolls[frameIndex + 2];
+                    frameIndex += 2;
                 }
                 else
                 {
-                    score += rolls[i] + rolls[i + 1];
-                    i += 2;
+                    score += rolls[frameIndex] + rolls[frameIndex + 1];
+                    frameIndex += 2;
                 }
             }
             return score;
