@@ -22,9 +22,7 @@ namespace BowlingGameTest
         [TestMethod]
         public void TestGutterGame()
         {
-            var n = 20;
-            int pins = 0;
-            RollMany(n, pins);
+            RollMany(20, 0);
             Assert.AreEqual(0, g.Score());
         }
 
